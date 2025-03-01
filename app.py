@@ -125,8 +125,10 @@
 
 #     """
 from flask import Flask, jsonify, request
+from flask_cors import CORS  # Allow API requests from Streamlit
 
 app = Flask(__name__)
+CORS(app)  # Enables cross-origin requests
 
 @app.route('/api/get_data', methods=['GET'])
 def get_data():
@@ -140,5 +142,4 @@ def send_data():
     return jsonify({"response": f"Received: {data['message']}"})
 
 if __name__ == '__main__':
-    app.run(debug=True, use_reloader=False, host="127.0.0.1", port=5001)
-
+    app.run(debug=True, use_reloader=False, host="0.0.0.0", port=8000)  # Use a different port

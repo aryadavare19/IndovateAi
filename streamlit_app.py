@@ -1,13 +1,12 @@
 import streamlit as st
 import requests
 
-FLASK_API_URL_GET = "http://127.0.0.1:5001/api/get_data"
-FLASK_API_URL_POST = "http://127.0.0.1:5001/api/send_data"
-
+FLASK_API_URL_GET = "http://127.0.0.1:8000/api/get_data"
+FLASK_API_URL_POST = "http://127.0.0.1:8000/api/send_data"
 
 st.title("Flask + Streamlit Hybrid App")
 
-# Fetch data from Flask API
+# Fetch Data from Flask API
 if st.button("Get Data from Flask API"):
     try:
         response = requests.get(FLASK_API_URL_GET)
@@ -19,7 +18,7 @@ if st.button("Get Data from Flask API"):
     except requests.exceptions.RequestException as e:
         st.error(f"Request failed: {e}")
 
-# Send data to Flask API
+# Send Data to Flask API
 st.subheader("Send Data to Flask API:")
 user_input = st.text_input("Enter new message:", "")
 
